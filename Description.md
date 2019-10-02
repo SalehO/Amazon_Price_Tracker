@@ -6,4 +6,3 @@ The email sent contains:
   -Item title 
   -Item original price
   -URL to the item
-
