@@ -7,7 +7,9 @@ URL = 'https://www.amazon.com/Zero-Tolerance-0393GLCF-Hinderer/dp/B07PDJB4NF?pf_
 headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36'}
 
 
-def checker(url_param):
+def checker(url_param, eml):
+    #set email to the email provided
+    em_add = eml
     #open url
     page = requests.get(url_param, headers=headers)
 
@@ -29,15 +31,15 @@ def checker(url_param):
     old_price = get_price(soup);
     i =0;
     while(True):
-        if(float_price < old_price):
+        if(float_price < float_price):
             ret_string = "The product: \n   {}\n Current Price is:\n   {}\n\n".format(title.strip(),str(float_price))
-            send_email(ret_string)
+            send_email(ret_string , em_add)
         print("checked: "+ str(i))
         i = i+1
         time.sleep(60)
 
 
-def send_email(title_price):
+def send_email(title_price, em):
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.ehlo() # establish connection
     server.starttls()
@@ -49,7 +51,7 @@ def send_email(title_price):
     body = '{} Check the amazon link https://www.amazon.com/Zero-Tolerance-0393GLCF-Hinderer/dp/B07PDJB4NF?pf_rd_p=0fc3f2c4-3ed5-4d11-9995-8d7c82394713&pd_rd_wg=jBCi1&pf_rd_r=EG2FXTY6WKCCFYZKJ9Y9&ref_=pd_gw_cr_simh&pd_rd_w=VDEYC&pd_rd_r=6311b83e-84d2-4543-bc3b-9420b5f7b2f5'.format(title_price)
 
     message = f"Subject: {subject}\n\n{body}"
-    server.sendmail('price.drop.tracker@gmail.com','ramohamidoo@gmail.com',message)
+    server.sendmail('price.drop.tracker@gmail.com', em ,message) ## Replace ramohamidoo@gmail.com with your OWN email
 
     print("Email has been sent")
 
@@ -57,7 +59,8 @@ def send_email(title_price):
 
 def user_input():
     g = input("Enter the URL: ")
-    checker(g)
+    e = input("Enter your email address: ")
+    checker(g, e)
 
 # checker()
 
