@@ -3,6 +3,6 @@ This program tracks the price of a given item on amazon. If the price drops it s
 It checks the price every 60 seconds.
 
 The email sent contains: 
-  -Item title 
-  -Item original price
-  -URL to the item
+  1) Item title 
+  2) Item original price 
+  3) URL to the item
