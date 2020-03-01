@@ -48,10 +48,10 @@ def send_email(title_price, em, urrrlll):
     server.login('price.drop.tracker@gmail.com','oduofmqwsgmlwhym')
 
     subject= "Amazon Price Drop!"
-    body = '{} Check the amazon link '.format(title_price)+ urrrlll # https://www.amazon.com/Zero-Tolerance-0393GLCF-Hinderer/dp/B07PDJB4NF?pf_rd_p=0fc3f2c4-3ed5-4d11-9995-8d7c82394713&pd_rd_wg=jBCi1&pf_rd_r=EG2FXTY6WKCCFYZKJ9Y9&ref_=pd_gw_cr_simh&pd_rd_w=VDEYC&pd_rd_r=6311b83e-84d2-4543-bc3b-9420b5f7b2f5'.format(title_price)
+    body = '{} Check the amazon link '.format(title_price)+ urrrlll 
 
     message = f"Subject: {subject}\n\n{body}"
-    server.sendmail('price.drop.tracker@gmail.com', em ,message) ## Replace ramohamidoo@gmail.com with your OWN email
+    server.sendmail('price.drop.tracker@gmail.com', em ,message) ## Replace price.drop.tracker@gmail.com with your OWN email
 
     print("Email has been sent")
 
